@@ -1,0 +1,19 @@
+{
+  "name": "laughing-octo-team-generator",
+  "version": "1.0.0",
+  "description": "Team generator that uses inquirer and adds input to an html file to show your team.",
+  "main": "scrpit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelab24/laughing-octo-team-generator.git"
+  },
+  "author": "M. Barnes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelab24/laughing-octo-team-generator/issues"
+  },
+  "homepage": "https://github.com/michaelab24/laughing-octo-team-generator#readme"
+}
