@@ -1,57 +1,80 @@
 const generateHTML = function (createTeam) {
     return `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- CDN link -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="style.css">
-         
-        <title>Team Generator</title>
-    </head>
-    <body>
-    <h1>My Team</h1>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- CDN link -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="style.css">
 
-    <div id="cards" class="teamCards">
-        <div id="manager" class="bossMan">
-            <h2>Manager</h2>
-            <div>Name: <span id="name1"></span></div>
-            <div>Employee ID: <span id="id1"></span></div>
-            <div>Email: <span id="email1"></span></div>
-            <div>Office Number: <span id="num1"></span></div>
-    </div>
-    <div id="cards" class="teamCards">
-        <div id="engineer" class="codeMan">
-            <h2>Engineer</h2>
-            <div>Name: <span id="name2"></span></div>
-            <div>Employee ID: <span id="id2"></span></div>
-            <div>Email: <span id="email2"></span></div>
-            <div>gitHub: <span id="gitHub"></span></div>
-        </div>
-    </div>
-    <div id="cards" class="teamCards">
-        <div id="intern" class="lowMan">
-            <h2>Intern</h2>
-            <div>Name: <span id="name3"></span></div>
-            <div>Email: <span id="email3"></span></div>
-            <div>School: <span id="school"></span></div>an></div>
+            <title>Team Generator</title>
+        </head>
+        <body>
+        <h1>My Team</h1>
+
+        <div class="col-4 mt-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h3>Manager</h3>
                 </div>
+
+                <div class="card-body">
+                        
+                    <div class="name">Name:</div>
+                    <div class="id">Employee ID: </div>
+                    <div class="email">Email: </div>
+                    <div class="office">Office Number: </div>
+                </div>
+                
             </div>
         </div>
-    </div>
-<div/>
+
+        <div class="col-4 mt-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h3>Engineer</h3>
+                </div>
+
+                <div class="card-body">
+                        
+                    <div class="name">Name:</div>
+                    <div class="id">Employee ID: </div>
+                    <div class="email">Email: </div>
+                    <div class="gitHub">gitHub: </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col-4 mt-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h3>Intern</h3>
+                </div>
+
+                <div class="card-body">
+                        
+                    <div class="name">Name:</div>
+                    <div class="id">Employee ID: </div>
+                    <div class="school">School: </div>
+                </div>
+                
+            </div>
+        </div>
 
 
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="index.js"></script>
-    </body>
-    </html>`
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="index.js"></script>
+        </body>
+        </html>`
 }
-//get array through the team
-//for each team member pull out objects of array
-//slap em to a cards
+
 module.exports = generateHTML;
+
+// get array through the team
+// for each team member pull out objects of array
+// slap em to a cards
