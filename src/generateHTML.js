@@ -1,4 +1,6 @@
-const generateHTML = function (createTeam) {
+const Manager = require("../lib/Manager");
+
+const generateTeamPage = function (createTeam) {
     return `<!DOCTYPE html>
         <html lang="en">
         <head>
@@ -14,6 +16,18 @@ const generateHTML = function (createTeam) {
         <body>
         <h1>My Team</h1>
 
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="index.js"></script>
+        </body>
+        </html>
+
+        `;
+}
+
+const generateManager = function (manager) {
+    return `
+
         <div class="col-4 mt-4">
             <div class="card h-100">
                 <div class="card-header">
@@ -22,7 +36,7 @@ const generateHTML = function (createTeam) {
 
                 <div class="card-body">
                         
-                    <div class="name">Name:</div>
+                    <div class="name">Name: </div>
                     <div class="id">Employee ID: </div>
                     <div class="email">Email: </div>
                     <div class="office">Office Number: </div>
@@ -30,6 +44,11 @@ const generateHTML = function (createTeam) {
                 
             </div>
         </div>
+    `;
+}
+
+const generateEngineer = function (engineer) {
+    return `
 
         <div class="col-4 mt-4">
             <div class="card h-100">
@@ -48,6 +67,12 @@ const generateHTML = function (createTeam) {
             </div>
         </div>
 
+    `;
+}
+
+const generateIntern = function (intern) {
+    return `
+
         <div class="col-4 mt-4">
             <div class="card h-100">
                 <div class="card-header">
@@ -63,15 +88,56 @@ const generateHTML = function (createTeam) {
                 
             </div>
         </div>
-
-
-
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="index.js"></script>
-        </body>
-        </html>`
+`;
 }
+
+// push array to page 
+generateHTML = (data) => {
+
+    // array for cards 
+    pageArray = []; 
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole(); 
+
+
+        // call manager function
+        if (role === 'Manager') {
+            const managerCard = generateManager(employee);
+
+            pageArray.push(managerCard);
+        }
+
+        // call engineer function
+        if (role === 'Engineer') {
+            const engineerCard = generateEngineer(employee);
+
+            pageArray.push(engineerCard);
+        }
+
+        // call intern function 
+        if (role === 'Intern') {
+            const internCard = generateIntern(employee);
+
+            pageArray.push(internCard);
+        }
+        
+    }
+
+    // joining strings 
+    const employeeCards = pageArray.join('')
+
+    // return to generated page
+    const generateTeam = generateTeamPage(employeeCards); 
+    return generateTeam;
+
+}
+
+
+
+
+            
 
 module.exports = generateHTML;
 
