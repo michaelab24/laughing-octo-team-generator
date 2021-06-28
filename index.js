@@ -164,9 +164,7 @@ const generateTeamPage = function () {
         <h1>My Team</h1>
 
         <main>
-            <div class="conatiner">
-                <div class="row justify-content-center" id="team-cards">
-                
+            <div class="container">               
                         <div class="col-4 mt-4">
                             <div class="card h-100">
                                 <div class="card-header">
@@ -177,18 +175,18 @@ const generateTeamPage = function () {
                                         
                                     <div class="name">Name: ${theTeam[0].name} </div>
                                     <div class="id">Employee ID: ${theTeam[0].id}</div>
-                                    <div class="email">Email: ${theTeam[0].email}</div>
+                                    <div class="email">Email: <a href="mailto:${theTeam[0].email}"> ${theTeam[0].email}</a></div>
                                     <div class="office">Office Number: ${theTeam[0].officeNumber}</div>
                                 </div>
                                 
                             </div>
                         </div>
-                    </div>
+                    
         `
-        htmlArray.push(boilerPlate)
-        for (i=1; i<theTeam.length; i++) {
-            if (theTeam[i].github) {
-                const employeeCard = `<div class="col-4 mt-4">
+    htmlArray.push(boilerPlate)
+    for (i = 1; i < theTeam.length; i++) {
+        if (theTeam[i].github) {
+            const employeeCard = `<div class="col-4 mt-4">
                 <div class="card h-100">
                     <div class="card-header">
                         <h3>Engineer</h3>
@@ -198,27 +196,48 @@ const generateTeamPage = function () {
                             
                         <div class="name">Name: ${theTeam[i].name}</div>
                         <div class="id">Employee ID: ${theTeam[i].id}</div>
-                        <div class="email">Email: ${theTeam[i].email}</div>
-                        <div class="gitHub">gitHub: ${theTeam[i].github}</div>
+                        <div class="email">Email: <a href="mailto:${theTeam[i].email}"> ${theTeam[i].email}</a></div>
+                        <div class="gitHub">gitHub: <a href="https://github.com/${theTeam[i].github}">${theTeam[i].github}</a></div>
                     </div>
                     
                 </div>
             </div>
                 `
-            htmlArray.push(employeeCard) 
-            }
+            htmlArray.push(employeeCard)
         }
-        const htmlEnding = `
-         </main>   
+
+        else if (theTeam[i].school) {
+            const employeeCard = `<div class="col-4 mt-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h3>Intern</h3>
+                </div>
+
+                <div class="card-body">
+                        
+                    <div class="name">Name: ${theTeam[i].name}</div>
+                    <div class="id">Employee ID: ${theTeam[i].id}</div>
+                    <div class="email">Email: <a href="mailto:${theTeam[i].email}"> ${theTeam[i].email}</a></div>
+                    <div class="school">School: ${theTeam[i].school}</div>
+                </div>
+                
+            </div>
+        </div>`
+            htmlArray.push(employeeCard)
+        }
+    }
+    const htmlEnding = `
+        </div> 
+        </main>   
 
         </body>
         </html>
 
         `;
 
-    
 
-    
+
+
     htmlArray.push(htmlEnding)
 
 
