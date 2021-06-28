@@ -5,7 +5,7 @@
 
 ## Description 
 
-This projects is a team profile generator that uses inquirer to generate the members of the team. As a manager begins to create his team, he is first prompted to enter his own information, he is then asked if he would like to add an engineer to his team, an intern, or select 'I am done'. Upon selecting either intern or engineer he is then prompted to enter the information of his team members. After he has filled outtheir respective info, upon selecting 'I am done' an HTML is generated with cards depicting the employees' info that he typed up. This gives him a nice view of his team all in one place. https://github.com/michaelab24/laughing-octo-team-generator
+This projects is a team profile generator that uses inquirer to generate the members of the team. As a manager begins to create his team, he is first prompted to enter his own information, he is then asked if he would like to add an engineer to his team, an intern, or select 'I am done'. Upon selecting either intern or engineer he is then prompted to enter the information of his team members. After he has filled out their respective info, upon selecting 'I am done' an HTML is generated with cards depicting the employees' info that he typed up. This gives him a nice view of his team all in one place. https://github.com/michaelab24/laughing-octo-team-generator
 
 ## Table of Contents
 * [Installation](#installation)
