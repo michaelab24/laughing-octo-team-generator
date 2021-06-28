@@ -25,7 +25,7 @@ Installed Jest and Inquirer to run the project.
 
 A video of project usage will be provided.
 ![Screenshot (22)](https://user-images.githubusercontent.com/81343536/123577615-c8935900-d799-11eb-83e9-783888e4ae0a.png)
-![Demo](./Team-Generator-Walk.gif)
+Team-Generator-Walk.gif
 
 ## Credits
 
