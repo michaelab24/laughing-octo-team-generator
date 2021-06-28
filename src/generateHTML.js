@@ -1,30 +1,3 @@
-const Manager = require("../lib/Manager");
-
-const generateTeamPage = function (createTeam) {
-    return `<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <!-- CDN link -->
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
-            <link rel="stylesheet" href="style.css">
-
-            <title>Team Generator</title>
-        </head>
-        <body>
-        <h1>My Team</h1>
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="index.js"></script>
-        </body>
-        </html>
-
-        `;
-}
-
 const generateManager = function (manager) {
     return `
 
@@ -36,10 +9,10 @@ const generateManager = function (manager) {
 
                 <div class="card-body">
                         
-                    <div class="name">Name: </div>
-                    <div class="id">Employee ID: </div>
-                    <div class="email">Email: </div>
-                    <div class="office">Office Number: </div>
+                    <div class="name">Name: ${manager.name} </div>
+                    <div class="id">Employee ID: ${manager.id}</div>
+                    <div class="email">Email: ${manager.email}</div>
+                    <div class="office">Office Number: ${manager.officeNumber}</div>
                 </div>
                 
             </div>
@@ -58,10 +31,10 @@ const generateEngineer = function (engineer) {
 
                 <div class="card-body">
                         
-                    <div class="name">Name:</div>
-                    <div class="id">Employee ID: </div>
-                    <div class="email">Email: </div>
-                    <div class="gitHub">gitHub: </div>
+                    <div class="name">Name: ${engineer.name}</div>
+                    <div class="id">Employee ID: ${engineer.id}</div>
+                    <div class="email">Email: ${engineer.email}</div>
+                    <div class="gitHub">gitHub: ${engineer.github}</div>
                 </div>
                 
             </div>
@@ -81,9 +54,9 @@ const generateIntern = function (intern) {
 
                 <div class="card-body">
                         
-                    <div class="name">Name:</div>
-                    <div class="id">Employee ID: </div>
-                    <div class="school">School: </div>
+                    <div class="name">Name: ${intern.name}</div>
+                    <div class="id">Employee ID: ${intern.id}</div>
+                    <div class="school">School: ${intern.school}</div>
                 </div>
                 
             </div>
@@ -95,7 +68,7 @@ const generateIntern = function (intern) {
 generateHTML = (data) => {
 
     // array for cards 
-    pageArray = []; 
+    cardArray = []; 
 
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
@@ -106,33 +79,68 @@ generateHTML = (data) => {
         if (role === 'Manager') {
             const managerCard = generateManager(employee);
 
-            pageArray.push(managerCard);
+            cardArray.push(managerCard);
         }
 
         // call engineer function
         if (role === 'Engineer') {
             const engineerCard = generateEngineer(employee);
 
-            pageArray.push(engineerCard);
+            cardArray.push(engineerCard);
         }
 
         // call intern function 
         if (role === 'Intern') {
             const internCard = generateIntern(employee);
 
-            pageArray.push(internCard);
+            cardArray.push(internCard);
         }
         
     }
 
     // joining strings 
-    const employeeCards = pageArray.join('')
+    const employeeCards = cardArray.join('')
 
     // return to generated page
     const generateTeam = generateTeamPage(employeeCards); 
     return generateTeam;
 
 }
+
+const generateTeamPage = function (createTeam) {
+    return `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- CDN link -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="style.css">
+
+            <title>Team Generator</title>
+        </head>
+        <body>
+        <h1>My Team</h1>
+
+        <main>
+            <div class="conatiner">
+                <div class="row justify-content-center" id="team-cards">
+
+                </div>
+            </div>
+         </main>   
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="index.js"></script>
+        </body>
+        </html>
+
+        `;
+}
+
+
 
 
 

@@ -6,6 +6,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+//team array
 const theTeam = []
 
 // start of manager prompts 
@@ -131,20 +132,99 @@ const addTeamMember = () => {
         } else if (memberData.type === 'Intern') {
             addIntern()
         } else {
-            buildTeam()
+            generateTeamPage()
         }
     })
 }
 
-const buildTeam = () => {
+// const buildTeam = () => {
 
-    const html = generateHTML(theTeam)
-    writeFile(html)
-}
+//     const html = generateHTML(theTeam)
+//     writeFile(html)
+// }
 
-// function to generate HTML page file using file system 
-const writeFile = data => {
-    fs.writeFile('./dist/index.html', data, err => {
+const generateTeamPage = function () {
+
+    const htmlArray = []
+    const boilerPlate =
+
+        `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- CDN link -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="style.css">
+
+            <title>Team Generator</title>
+        </head>
+        <body>
+        <h1>My Team</h1>
+
+        <main>
+            <div class="conatiner">
+                <div class="row justify-content-center" id="team-cards">
+                
+                        <div class="col-4 mt-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h3>Manager</h3>
+                                </div>
+                
+                                <div class="card-body">
+                                        
+                                    <div class="name">Name: ${theTeam[0].name} </div>
+                                    <div class="id">Employee ID: ${theTeam[0].id}</div>
+                                    <div class="email">Email: ${theTeam[0].email}</div>
+                                    <div class="office">Office Number: ${theTeam[0].officeNumber}</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+        `
+        htmlArray.push(boilerPlate)
+        for (i=1; i<theTeam.length; i++) {
+            if (theTeam[i].github) {
+                const employeeCard = `<div class="col-4 mt-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3>Engineer</h3>
+                    </div>
+    
+                    <div class="card-body">
+                            
+                        <div class="name">Name: ${theTeam[i].name}</div>
+                        <div class="id">Employee ID: ${theTeam[i].id}</div>
+                        <div class="email">Email: ${theTeam[i].email}</div>
+                        <div class="gitHub">gitHub: ${theTeam[i].github}</div>
+                    </div>
+                    
+                </div>
+            </div>
+                `
+            htmlArray.push(employeeCard) 
+            }
+        }
+        const htmlEnding = `
+         </main>   
+
+        </body>
+        </html>
+
+        `;
+
+    
+
+    
+    htmlArray.push(htmlEnding)
+
+
+    // function to generate HTML page file using file system 
+    // const writeFile = data => {
+    fs.writeFile('./dist/index.html', htmlArray.join(""), err => {
         // if there is an error 
         if (err) {
             console.log(err);
@@ -153,7 +233,7 @@ const writeFile = data => {
         } else {
             console.log("Your team profile has been successfully created! Please check out the index.html")
         }
-    })
+    });
 };
 
 
